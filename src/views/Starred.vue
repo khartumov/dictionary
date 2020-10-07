@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="starred">
     <List />
   </div>
 </template>
@@ -8,7 +8,7 @@
 import List from '@/components/List.vue'
 
 export default {
-  name: 'Home',
+  name: 'Starred',
   components: {
     List
   }
