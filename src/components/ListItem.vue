@@ -76,7 +76,7 @@ export default {
       min-width: 20px;
       height: 20px;
       margin-right: 15px;
-      cursor: pointer;
+      cursor: move;
 
       &:before {
         content: '\2630';

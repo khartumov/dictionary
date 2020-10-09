@@ -1,5 +1,11 @@
 <template>
-  <div class="list">
+  <div>
+    <draggable
+      tag="div"
+      :list="words"
+      class="list"
+      handle=".list-item__sort"
+    >
       <ListItem
         v-for="(word,index) in words"
         :key="`${word.title}_${index}`"
@@ -10,17 +16,20 @@
         :is-sortable="true"
         @change-star-status="word.isStarred = !word.isStarred"
       />
+    </draggable>
   </div>
 </template>
 
 <script>
 import ListItem from '@/components/ListItem.vue'
+import draggable from 'vuedraggable'
 
 export default {
   name: 'List',
 
   components: {
-    ListItem
+    ListItem,
+    draggable
   },
 
   data () {
