@@ -1,7 +1,13 @@
 <template>
   <div class="starred">
-    <Search class="starred__search" />
-    <List class="starred__list" />
+    <Search
+      class="starred__search"
+      @search-event="filterList"
+    />
+    <List
+      class="starred__list"
+      :part-of-word="searchData"
+    />
   </div>
 </template>
 
@@ -14,6 +20,18 @@ export default {
   components: {
     Search,
     List
+  },
+
+  data () {
+    return {
+      searchData: ''
+    }
+  },
+
+  methods: {
+    filterList (searchData) {
+      this.searchData = searchData
+    }
   }
 }
 </script>

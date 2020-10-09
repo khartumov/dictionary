@@ -1,22 +1,29 @@
 <template>
   <div>
     <draggable
+      v-if="filteredWords.length !== 0"
       tag="div"
       :list="words"
       class="list"
       handle=".list-item__sort"
     >
-      <ListItem
-        v-for="(word,index) in words"
-        :key="`${word.title}_${index}`"
-        :title="word.title"
-        :part-of-speech="word.partOfSpeech"
-        :description="word.description"
-        :is-starred="word.isStarred"
-        :is-sortable="true"
-        @change-star-status="word.isStarred = !word.isStarred"
-      />
+        <ListItem
+          v-for="(word,index) in filteredWords"
+          :key="`${word.title}_${index}`"
+          :title="word.title"
+          :part-of-speech="word.partOfSpeech"
+          :description="word.description"
+          :is-starred="word.isStarred"
+          :is-sortable="true"
+          @change-star-status="word.isStarred = !word.isStarred"
+        />
     </draggable>
+    <div
+      v-else
+      class="list"
+    >
+      Words not found
+    </div>
   </div>
 </template>
 
@@ -30,6 +37,20 @@ export default {
   components: {
     ListItem,
     draggable
+  },
+
+  props: {
+    partOfWord: {
+      type: String,
+      default: ''
+    }
+  },
+
+  computed: {
+    filteredWords () {
+      return this.words
+        .filter(({ title }) => this.partOfWord === '' ? title : title.toLowerCase().includes(this.partOfWord))
+    }
   },
 
   data () {

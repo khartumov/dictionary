@@ -4,8 +4,8 @@
       type="text"
       class="search__field"
       placeholder="Type text..."
-      v-model="search"
-      @input="searchEvent($event)"
+      v-model.trim="search"
+      @input="$emit('search-event', search)"
     >
   </aside>
 </template>
@@ -17,13 +17,6 @@ export default {
   data () {
     return {
       search: ''
-    }
-  },
-
-  methods: {
-    searchEvent (e) {
-      console.log(e.target.value)
-      // TODO: send value to List
     }
   }
 }
