@@ -52,6 +52,18 @@ export default {
           partOfSpeech: 'noun',
           description: 'the quality or state of being free: such as',
           isStarred: false
+        },
+        {
+          title: 'freedom',
+          partOfSpeech: 'noun',
+          description: 'the quality or state of being free: such as',
+          isStarred: false
+        },
+        {
+          title: 'freequency',
+          partOfSpeech: 'noun',
+          description: 'the ddd or state of being free: such as',
+          isStarred: false
         }
       ]
     }
