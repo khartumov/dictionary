@@ -60,7 +60,7 @@ export default {
           title: 'apple',
           partOfSpeech: 'noun',
           description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-          isStarred: false
+          isStarred: true
         },
         {
           title: 'dog',
@@ -72,19 +72,31 @@ export default {
           title: 'international',
           partOfSpeech: 'noun',
           description: 'the quality or state of being free: such as',
-          isStarred: false
+          isStarred: true
         },
         {
           title: 'freedom',
-          partOfSpeech: 'noun',
-          description: 'the quality or state of being free: such as',
-          isStarred: false
+          partOfSpeech: 'adjective',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, the quality or state of being free: such as. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+          isStarred: true
         },
         {
           title: 'freequency',
           partOfSpeech: 'noun',
           description: 'the ddd or state of being free: such as',
-          isStarred: false
+          isStarred: true
+        },
+        {
+          title: 'move',
+          partOfSpeech: 'verb',
+          description: 'Lorem ipsum dolor sit amet the ddd or state of being free: such as. Lorem ipsum dolor sit amet the ddd or state of being free: such asthe ddd or state of being free: such as',
+          isStarred: true
+        },
+        {
+          title: 'fight',
+          partOfSpeech: 'verb',
+          description: 'Lorem ipsum dolor sit amet the ddd or state of being free: such as. Lorem ipsum dolor sit amet the ddd or state of being free: such as',
+          isStarred: true
         }
       ]
     }

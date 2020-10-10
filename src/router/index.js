@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import Home from '../views/Home.vue'
 import Starred from '../views/Starred.vue'
+import Single from '../views/Single.vue'
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,11 @@ const routes = [
     path: '/starred',
     name: 'Starred',
     component: Starred
+  },
+  {
+    path: '/:title',
+    name: 'Single',
+    component: Single
   }
 ]
 

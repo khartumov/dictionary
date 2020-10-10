@@ -6,7 +6,14 @@
         class="list-item__sort">
       </div>
       <router-link
-        to="#"
+        :to="{
+          name: 'Single',
+          params: {
+            title,
+            partOfSpeech,
+            description
+          }
+        }"
         class="list-item__title"
       >
         {{ title }}

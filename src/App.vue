@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="app">
     <Header />
-    <h1 class="app__title">{{ $route.name }}</h1>
+    <h1 class="app__title">{{ capitalisedWord || $route.name }}</h1>
     <Layout />
   </div>
 </template>
@@ -14,6 +14,14 @@ export default {
   components: {
     Header,
     Layout
+  },
+
+  computed: {
+    capitalisedWord () {
+      return this.$route.params.title
+        ? this.$route.params.title[0].toUpperCase() + this.$route.params.title.slice(1)
+        : null
+    }
   }
 }
 </script>
