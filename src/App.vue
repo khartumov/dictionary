@@ -22,6 +22,20 @@ export default {
         ? this.$route.params.title[0].toUpperCase() + this.$route.params.title.slice(1)
         : null
     }
+  },
+
+  methods: {
+    getStarredWords () {
+      const starredWords = localStorage.getItem('dictionaryStarredWords')
+
+      if (starredWords) {
+        this.$store.commit('setStarredWordsFromLS', JSON.parse(starredWords))
+      }
+    }
+  },
+
+  mounted () {
+    this.getStarredWords()
   }
 }
 </script>
