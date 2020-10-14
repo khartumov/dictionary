@@ -1,12 +1,17 @@
 <template>
   <aside class="search">
-    <input
-      type="text"
-      class="search__field"
-      placeholder="Type text..."
-      v-model.trim="search"
-      @input="$emit('search-event', search)"
+    <form
+      action=""
+      @submit.prevent="submitHandler"
     >
+      <input
+        type="text"
+        class="search__field"
+        placeholder="Type text..."
+        v-model.trim="search"
+        @input="$emit('search-event', search)"
+      >
+    </form>
   </aside>
 </template>
 
@@ -17,6 +22,18 @@ export default {
   data () {
     return {
       search: ''
+    }
+  },
+
+  methods: {
+    submitHandler (e) {
+      if (this.$route.path === '/starred') {
+        return false
+      }
+
+      if (this.$route.path === '/') {
+        this.$emit('find-word', this.search)
+      }
     }
   }
 }
