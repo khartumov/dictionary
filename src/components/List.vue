@@ -62,9 +62,9 @@ export default {
   },
 
   props: {
-    partOfWord: {
-      type: String,
-      default: ''
+    filterParams: {
+      type: Object,
+      default: () => {}
     },
     words: {
       type: Array,
@@ -75,7 +75,12 @@ export default {
   computed: {
     filteredWords () {
       return this.words
-        .filter(({ title }) => this.partOfWord === '' ? title : title.toLowerCase().includes(this.partOfWord))
+        .filter(({ title }) => this.filterParams.text === '' ? true : title.toLowerCase().includes(this.filterParams.text))
+        .filter(({ partOfSpeech }) => {
+          return this.filterParams.partsOfSpeech.length === 0
+            ? true
+            : this.filterParams.partsOfSpeech.includes(partOfSpeech)
+        })
     },
 
     isStarredPage () {

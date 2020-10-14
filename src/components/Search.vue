@@ -8,9 +8,28 @@
         type="text"
         class="search__field"
         placeholder="Type text..."
-        v-model.trim="search"
-        @input="$emit('search-event', search)"
+        v-model.trim="searchParams.text"
+        @input="$emit('search-event', searchParams)"
       >
+      <div
+        v-if="isStarredPage"
+        class="search__parts-of-speech"
+      >
+        <div
+          v-for="(item,index) in getPartsOfSpeech"
+          :key="`${item}_${index}`"
+          class="search__parts-of-speech-item"
+        >
+          <input
+            type="checkbox"
+            :id="item"
+            :value="item"
+            v-model="searchParams.partsOfSpeech"
+            @input="$emit('search-event', searchParams)"
+          >
+          <label :for="item">{{item}}</label>
+        </div>
+      </div>
     </form>
   </aside>
 </template>
@@ -21,7 +40,26 @@ export default {
 
   data () {
     return {
-      search: ''
+      searchParams: {
+        text: '',
+        partsOfSpeech: []
+      }
+    }
+  },
+
+  computed: {
+    isStarredPage () {
+      return this.$route.path === '/starred'
+    },
+
+    starredWords () {
+      return this.$store.state.starredWords
+    },
+
+    getPartsOfSpeech () {
+      const partsOfSpeech = this.starredWords.map(word => word.partOfSpeech)
+
+      return [...new Set(partsOfSpeech)]
     }
   },
 
@@ -32,7 +70,7 @@ export default {
       }
 
       if (this.$route.path === '/') {
-        this.$emit('find-word', this.search)
+        this.$emit('find-word', this.searchParams.text)
       }
     }
   }
@@ -58,6 +96,10 @@ export default {
         outline:none;
         box-shadow: 0 0 10px 0px rgba(50, 50, 50, 0.3);
       }
+    }
+
+    &__parts-of-speech {
+      margin-top: 10px;
     }
   }
 </style>

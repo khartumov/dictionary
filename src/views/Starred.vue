@@ -6,7 +6,7 @@
     />
     <List
       class="starred__list"
-      :part-of-word="searchData"
+      :filter-params="searchData"
       :words="starredWords"
     />
   </div>
@@ -25,7 +25,10 @@ export default {
 
   data () {
     return {
-      searchData: ''
+      searchData: {
+        text: '',
+        partsOfSpeech: []
+      }
     }
   },
 
@@ -36,8 +39,8 @@ export default {
   },
 
   methods: {
-    filterList (searchData) {
-      this.searchData = searchData
+    filterList (searchParams) {
+      this.searchData = searchParams
     }
   }
 }
@@ -49,7 +52,7 @@ export default {
     justify-content: space-between;
 
     &__search {
-      width: 26%;
+      width: 25%;
     }
 
     &__list {

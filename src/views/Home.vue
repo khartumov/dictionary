@@ -58,7 +58,7 @@ export default {
     justify-content: space-between;
 
     &__search {
-      width: 26%;
+      width: 25%;
     }
 
     &__list {
