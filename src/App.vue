@@ -41,19 +41,27 @@ export default {
 </script>
 
 <style lang="less">
-.app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  background-color: #F8F4F4;
-  border-radius: 5px;
-  padding: 15px;
-  max-width: 1200px;
-  margin: 0 auto;
+  .app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    background-color: #F8F4F4;
+    border-radius: 5px;
+    padding: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
 
-  &__title {
-    margin: 40px 0;
+    &__title {
+      margin: 40px 0;
+    }
   }
-}
+
+  @media (max-width: 560px) {
+    .app {
+      &__title {
+        margin: 20px 0;
+      }
+    }
+  }
 </style>

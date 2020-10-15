@@ -56,13 +56,29 @@ export default {
   .home {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 
     &__search {
-      width: 25%;
+      width: 27%;
     }
 
     &__list {
       width: 70%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .home {
+      flex-direction: column;
+
+      &__search {
+        width: 100%;
+      }
+
+      &__list {
+        width: 100%;
+        margin-top: 15px;
+      }
     }
   }
 </style>

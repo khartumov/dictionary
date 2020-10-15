@@ -79,6 +79,7 @@ export default {
 
 <style lang="less">
   .search {
+    box-sizing: border-box;
     background: #EFEFEF;
     border-radius: 5px;
     padding: 15px;

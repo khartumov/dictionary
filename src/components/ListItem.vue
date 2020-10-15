@@ -114,9 +114,18 @@ export default {
       width: 20px;
       height: 20px;
       background: url('../assets/star.svg') no-repeat center / cover;
+      flex-shrink: 0;
 
       &--filled {
         background: url('../assets/star--filled.svg') no-repeat center / cover;
+      }
+    }
+  }
+
+  @media (max-width: 560px) {
+    .list-item {
+      &__word-info {
+        flex-direction: column;
       }
     }
   }
