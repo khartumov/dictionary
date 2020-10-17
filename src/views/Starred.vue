@@ -4,11 +4,13 @@
       class="starred__search"
       @search-event="filterList"
     />
-    <List
-      class="starred__list"
-      :filter-params="searchData"
-      :words="starredWords"
-    />
+    <div class="starred__content">
+      <List
+        class="starred__list"
+        :filter-params="searchData"
+        :words="starredWords"
+      />
+    </div>
   </div>
 </template>
 
@@ -56,7 +58,7 @@ export default {
       width: 27%;
     }
 
-    &__list {
+    &__content {
       width: 70%;
     }
   }
@@ -69,7 +71,7 @@ export default {
         width: 100%;
       }
 
-      &__list {
+      &__content {
         width: 100%;
         margin-top: 15px;
       }

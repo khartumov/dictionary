@@ -4,17 +4,26 @@
       class="home__search"
       @find-word="fetchWord"
     />
-    <List
-      class="home__list"
-      :part-of-word="searchData"
-      :words="words"
-    />
+    <div class="home__content">
+      <Message
+        v-if="errorText"
+        :text="errorText"
+        type="error"
+      />
+      <List
+        v-if="!errorText"
+        class="home__list"
+        :part-of-word="searchData"
+        :words="words"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import Search from '@/components/Search.vue'
 import List from '@/components/List.vue'
+import Message from '@/components/Message.vue'
 import axios from 'axios'
 import { APIKEY } from '../apiKey'
 
@@ -22,13 +31,15 @@ export default {
   name: 'Home',
   components: {
     Search,
-    List
+    List,
+    Message
   },
 
   data () {
     return {
       searchData: '',
-      words: []
+      words: [],
+      errorText: null
     }
   },
 
@@ -44,9 +55,11 @@ export default {
             description: data[0].shortdef[0],
             isStarred: this.getWordfromStarred(title) ? true : false // eslint-disable-line
           }]
+
+          this.errorText = null
         })
         .catch(error => {
-          // TODO: show error
+          this.errorText = 'Word not found. Please type another word and try again.'
           this.words = []
           console.error(error)
         })
@@ -69,7 +82,7 @@ export default {
       width: 27%;
     }
 
-    &__list {
+    &__content {
       width: 70%;
     }
   }
@@ -82,7 +95,7 @@ export default {
         width: 100%;
       }
 
-      &__list {
+      &__content {
         width: 100%;
         margin-top: 15px;
       }
