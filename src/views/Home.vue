@@ -36,17 +36,24 @@ export default {
     fetchWord (searchData) {
       axios.get(`https://dictionaryapi.com/api/v3/references/collegiate/json/${searchData}?key=${APIKEY}`)
         .then(({ data }) => {
+          const title = data[0].hwi.hw.replace('*', '')
+
           this.words = [{
-            title: data[0].hwi.hw.replace('*', ''),
+            title,
             partOfSpeech: data[0].fl,
             description: data[0].shortdef[0],
-            isStarred: false
+            isStarred: this.getWordfromStarred(title) ? true : false // eslint-disable-line
           }]
         })
         .catch(error => {
           // TODO: show error
-          console.log(error)
+          this.words = []
+          console.error(error)
         })
+    },
+
+    getWordfromStarred (title) {
+      return this.$store.getters.getWordByTitle(title)
     }
   }
 }

@@ -16,7 +16,7 @@
             :description="word.description"
             :is-starred="word.isStarred"
             :is-sortable="true"
-            @change-star-status="word.isStarred = !word.isStarred"
+             @change-star-status="changeStarStatus(word)"
           />
       </draggable>
       <div
@@ -36,7 +36,8 @@
           :title="words[0].title"
           :part-of-speech="words[0].partOfSpeech"
           :description="words[0].description"
-          :is-starred="false"
+          :is-starred="words[0].isStarred"
+          @change-star-status="changeStarStatus(words[0])"
         />
       </div>
       <div
@@ -85,6 +86,13 @@ export default {
 
     isStarredPage () {
       return this.$route.path === '/starred'
+    }
+  },
+
+  methods: {
+    changeStarStatus (word) {
+      this.$store.dispatch('changeWordStatus', word)
+      word.isStarred = !word.isStarred
     }
   }
 }

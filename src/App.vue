@@ -25,7 +25,7 @@ export default {
   },
 
   methods: {
-    getStarredWords () {
+    getStarredWordsFromLS () {
       const starredWords = localStorage.getItem('dictionaryStarredWords')
 
       if (starredWords) {
@@ -35,7 +35,7 @@ export default {
   },
 
   mounted () {
-    this.getStarredWords()
+    this.getStarredWordsFromLS()
   }
 }
 </script>
