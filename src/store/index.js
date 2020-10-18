@@ -29,7 +29,7 @@ export const store = new Vuex.Store({
   },
 
   actions: {
-    changeWordStatus ({ commit, getters }, word) {
+    changeWordStatus ({ dispatch, commit, getters }, word) {
       const isWordInStarred = getters.getWordByTitle(word.title)
 
       if (!isWordInStarred) {
@@ -38,6 +38,10 @@ export const store = new Vuex.Store({
         commit('removeWordFromStarred', word)
       }
 
+      dispatch('updateLocalStorage')
+    },
+
+    updateLocalStorage () {
       localStorage.setItem('dictionaryStarredWords', JSON.stringify(this.state.starredWords))
     }
   }

@@ -7,6 +7,7 @@
         :list="words"
         class="list"
         handle=".list-item__sort"
+        @end="endSortable"
       >
           <ListItem
             v-for="(word,index) in filteredWords"
@@ -93,6 +94,10 @@ export default {
     changeStarStatus (word) {
       word.isStarred = !word.isStarred
       this.$store.dispatch('changeWordStatus', word)
+    },
+
+    endSortable () {
+      this.$store.dispatch('updateLocalStorage')
     }
   }
 }
