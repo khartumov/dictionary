@@ -91,8 +91,8 @@ export default {
 
   methods: {
     changeStarStatus (word) {
-      this.$store.dispatch('changeWordStatus', word)
       word.isStarred = !word.isStarred
+      this.$store.dispatch('changeWordStatus', word)
     }
   }
 }

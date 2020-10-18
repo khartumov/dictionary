@@ -47,7 +47,7 @@ export default {
     fetchWord (searchData) {
       axios.get(`https://dictionaryapi.com/api/v3/references/collegiate/json/${searchData}?key=${APIKEY}`)
         .then(({ data }) => {
-          const title = data[0].hwi.hw.replace('*', '')
+          const title = data[0].hwi.hw.replace(/\*/g, '')
 
           this.words = [{
             title,
