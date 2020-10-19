@@ -1,5 +1,8 @@
 # dictionary
 
+## Demo
+[https://khartumov.github.io/dictionary/](https://khartumov.github.io/dictionary/)
+
 ## Project setup
 ```
 npm install
@@ -20,5 +23,11 @@ npm run build
 npm run lint
 ```
 
+### Deployment
+```
+npm run deploy
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+

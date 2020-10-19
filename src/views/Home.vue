@@ -53,7 +53,7 @@ export default {
             title,
             partOfSpeech: data[0].fl,
             description: data[0].shortdef[0],
-            isStarred: this.getWordfromStarred(title) ? true : false // eslint-disable-line
+            isStarred: !!this.getWordfromStarred(title)
           }]
 
           this.errorText = null
